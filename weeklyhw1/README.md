@@ -59,7 +59,5 @@ In this assignment, I successfully implemented three distinct components: Point 
 • Overloaded std::cout to print the Matrix.
    
 • Utilized CMakeLists.txt for building the package.
-   
-• Shared the work on GitHub and provided comprehensive documentation.
 
 This assignment reflects my proficiency in C++ programming, incorporating various concepts such as structs, classes, error handling, and object-oriented design principles.
