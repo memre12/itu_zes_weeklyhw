@@ -48,16 +48,6 @@ In this assignment, I successfully implemented three distinct components: Point 
            • zeroes, ones, identity matrix creators: Constructs specific matrices.
        
 • Encapsulated the matrix as a private attribute and employed const keyword and pass by reference for optimization.
-
-# Additional Improvements:
-
-   
-• Operator overloading for addition and subtraction.
-   
-• Templated the Matrix class for type flexibility.
-   
-• Overloaded std::cout to print the Matrix.
-   
 • Utilized CMakeLists.txt for building the package.
 
 This assignment reflects my proficiency in C++ programming, incorporating various concepts such as structs, classes, error handling, and object-oriented design principles.
