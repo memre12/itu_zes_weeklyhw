@@ -1,6 +1,6 @@
 # Understanding Pointers in C++ and Smart Pointers Implementation
 
-In this assignment, I delved into the intricacies of pointers in C++ and explored the advantages and disadvantages associated with them. The oral presentation covers the fundamentals of pointers, while the report focuses on specific topics related to pointers in C++.
+In this assignment, I delved into the intricacies of pointers in C++ and explored the advantages and disadvantages associated with them.
 
     Garbage Collection Mechanism:
         Explored the absence of automatic garbage collection in C++.
