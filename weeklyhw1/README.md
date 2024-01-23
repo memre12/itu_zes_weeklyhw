@@ -14,7 +14,7 @@ In this assignment, I successfully implemented three distinct components: Point 
            • region(): Identifies the region of the Point in 3D space.
            • is_in_same_region(): Verifies whether two Points are in the same region.
 
-  # 2- Calculator Class:
+  # 2- Calculator:
        
 • Created a basic Calculator class with the following methods:
 
@@ -30,7 +30,7 @@ In this assignment, I successfully implemented three distinct components: Point 
        
 • Utilized throw-catch structures for robust error handling.
 
-  # 3- Matrix Class:
+  # 3- Matrix:
        
 • Developed a functional Matrix class using std::vector for implementing operations.
        
