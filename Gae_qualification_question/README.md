@@ -18,7 +18,7 @@
 ## Astronaut Class (Subclass of Person)
 * **Additional Private Attributes:** num_missions.
 ### Methods
-* _ _init_ _(self, name=None, surname=None, num_missions=0): Constructor to initialize the astronaut with optional attributes.
+* **_ _init_ _(self, name=None, surname=None, num_missions=0):** Constructor to initialize the astronaut with optional attributes.
 * **complete_mission(self):** Increments the num_missions attribute.
 * **get_num_missions(self):** Returns the number of missions completed by the astronaut.
 ## Mission Class
@@ -35,7 +35,7 @@
 ## Agency Class
 * **Private Attributes:** name, cash, ticket_price, completed_missions, next_missions.
 ### Methods
-* **_ _init_ _(self, name="NASA", cash=25000, ticket_price=1200):** Constructor to initialize the agency with optional attributes. (These values are arbitrary. You can create values what you want)
+* **_ _init_ _(self, name="NASA", cash=25000, ticket_price=1200):** Constructor to initialize the agency with optional attributes. (These values are arbitary. You can create values what you want)
 * **add_mission(self, mission):** Adds a mission to the agency's next_missions list.
 * **execute_next_mission(self):** Executes the next mission, updating cash and mission lists accordingly.
 * **agency_info(self):** Prints information about the agency, including name, cash, ticket price, and details of next and completed missions
