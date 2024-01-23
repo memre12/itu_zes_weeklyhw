@@ -9,7 +9,7 @@
 * **get_surname(self):** Returns the person's surname.
 * **full_name(self):** Returns the full name of the person.
 ## Passenger Class (Subclass of Person
-* Additional Private Attributes: cash and has_ticket.
+* **Additional Private Attributes:** cash and has_ticket.
 ### Methods
 * **_ _init_ _(self, name=None, surname=None, cash=0, has_ticket=False):** Constructor to initialize the passenger with optional attributes.
 * **buy_ticket(self, ticket_price):** Buys a ticket if the passenger has enough cash.
