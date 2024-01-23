@@ -35,7 +35,7 @@
 ## Agency Class
 * **Private Attributes:** name, cash, ticket_price, completed_missions, next_missions.
 ### Methods
-* **_ _init_ _(self, name="NASA", cash=25000, ticket_price=1200):** Constructor to initialize the agency with optional attributes.
+* **_ _init_ _(self, name="NASA", cash=25000, ticket_price=1200):** Constructor to initialize the agency with optional attributes. (These values are arbitrary. You can create values what you want)
 * **add_mission(self, mission):** Adds a mission to the agency's next_missions list.
 * **execute_next_mission(self):** Executes the next mission, updating cash and mission lists accordingly.
 * **agency_info(self):** Prints information about the agency, including name, cash, ticket price, and details of next and completed missions
