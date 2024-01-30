@@ -16,6 +16,6 @@
 
 void display_menu(const std::string& arrayName);
 void display_price(const std::string& arrayPrice);
-//void display_tastebalance(const std::string& category);
+
 
 #endif // DISPLAYMENU_HPP
