@@ -1,6 +1,6 @@
 
 # Crypto Currency Simulation 
-* My code represents simulation of a cryptocurrency market, where users can interact, enter orders, and observe market dynamics over time. 
+* The code represents simulation of a cryptocurrency market, where users can interact, enter orders, and observe market dynamics over time. 
 
 ## OrderBookEntry Class:
 *  **Constructor:** Initializes an OrderBookEntry with the provided parameters: price, amount, timestamp, product, orderType, and username.
