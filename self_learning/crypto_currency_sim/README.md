@@ -1,8 +1,8 @@
 
 # Crypto Currency Simulation 
+* My code represents simulation of a cryptocurrency market, where users can interact, enter orders, and observe market dynamics over time. 
 
 ## OrderBookEntry Class:
-My code represents simulation of a cryptocurrency market, where users can interact, enter orders, and observe market dynamics over time. 
 *  **Constructor:** Initializes an OrderBookEntry with the provided parameters: price, amount, timestamp, product, orderType, and username.
 * **stringToOrderBookType Function:** Converts a string representation of an order type ("ask" or "bid") to the corresponding OrderBookType enum. If the input is not "ask" or "bid," it outputs an error message to std::cerr and returns OrderBookType::unknown.
 * **Comparison Functions:** Provides static comparison functions for sorting OrderBookEntry objects based on timestamp, ascending price, and descending price.
