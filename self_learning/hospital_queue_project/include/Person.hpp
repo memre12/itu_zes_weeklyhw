@@ -1,5 +1,3 @@
-// person.hpp
-
 #pragma once
 
 #ifndef PERSON_HPP  // Include guard to prevent multiple inclusion
