@@ -1,5 +1,5 @@
 # Hospital Queue Project
-* This project appears to be a simple hospital registration system implemented in C++. The system includes classes for handling patient registration, examination queues, and CSV file output.
+* This project is a simple hospital registration system implemented in C++. The system includes classes for handling patient registration, examination queues, and CSV file output.
 
 ## Person Class (Person.hpp, Person.cpp):
 
