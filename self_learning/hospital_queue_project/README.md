@@ -12,4 +12,3 @@
 ## Main Program (main.cpp):
 
 * Creates an instance of the HospitalRegistration class. Creates several instances of the Person class representing different patients and registers them in the hospital. Prints the examination queue and writes patient information to a CSV file.
-Overall, the project focuses on managing patient registrations, prioritizing patients based on certain criteria, and handling the output of patient information to a CSV file. It's a basic simulation of a hospital registration system in C++.
