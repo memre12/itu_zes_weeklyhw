@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef PERSON_HPP  // Include guard to prevent multiple inclusion
+#ifndef PERSON_HPP
 #define PERSON_HPP
 
 #pragma once
