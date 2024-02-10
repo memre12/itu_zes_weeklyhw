@@ -1,4 +1,3 @@
-// HospitalRegistration.hpp
 #pragma once
 
 #ifndef HOSPITALREGISTRATION_HPP
