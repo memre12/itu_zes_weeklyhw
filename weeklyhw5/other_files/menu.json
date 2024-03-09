@@ -1,0 +1,164 @@
+{
+  "starters": [
+    {
+      "name": "Bruschetta",
+      "price": 8,
+      "taste_balance": {"sweet": 3,"sour": 7,"bitter": 2,"salty": 4,"savory": 6}
+    },
+    {
+      "name": "Spinach and Artichoke Dip",
+      "price": 10,
+      "taste_balance": {"sweet": 2,"sour": 4,"bitter": 1,"salty": 5,"savory": 8}
+    },
+    {
+      "name": "Caprese Salad",
+      "price": 9,
+      "taste_balance": {"sweet": 4,"sour": 5,"bitter": 1,"salty": 5,"savory": 7}
+    },
+    {
+      "name": "Chicken Wings",
+      "price": 12,
+      "taste_balance": {"sweet": 2,"sour": 3,"bitter": 1,"salty": 8,"savory": 7}
+    },
+    {
+      "name": "Garlic Bread",
+      "price": 6,
+      "taste_balance": {"sweet": 1,"sour": 2,"bitter": 1,"salty": 3,"savory": 8}
+    }
+  ],
+  "salads": [
+    {
+      "name": "Caesar Salad",
+      "price": 12,
+      "taste_balance": {"sweet": 1,"sour": 2,"bitter": 4,"salty": 6,"savory": 7}
+    },
+    {
+      "name": "Greek Salad",
+      "price": 11,
+      "taste_balance": {"sweet": 2,"sour": 3,"bitter": 2,"salty": 5,"savory": 7}
+    },
+    {
+      "name": "Cobb Salad",
+      "price": 13,
+      "taste_balance": {"sweet": 2,"sour": 4,"bitter": 3,"salty": 5,"savory": 6}
+    },
+    {
+      "name": "Asian Chicken Salad",
+      "price": 14,
+      "taste_balance": {"sweet": 3,"sour": 5,"bitter": 2,"salty": 4,"savory": 7}
+    },
+    {
+      "name": "Quinoa Salad",
+      "price": 10,
+      "taste_balance": {"sweet": 2,"sour": 3,"bitter": 1,"salty": 4,"savory": 6}
+    }
+  ],
+  "main_courses": [
+    {
+      "name": "Grilled Salmon",
+      "price": 18,
+      "taste_balance": {"sweet": 2,"sour": 3,"bitter": 1,"salty": 7,"savory": 8}
+    },
+    {
+      "name": "Chicken Alfredo",
+      "price": 15,
+      "taste_balance": {"sweet": 3,"sour": 2,"bitter": 2,"salty": 5,"savory": 9}
+    },
+    {
+      "name": "Beef Stroganoff",
+      "price": 20,
+      "taste_balance": {"sweet": 1,"sour": 2,"bitter": 2,"salty": 6,"savory": 9}
+    },
+    {
+      "name": "Vegetable Stir-Fry",
+      "price": 16,
+      "taste_balance": {"sweet": 3,"sour": 4,"bitter": 2,"salty": 3,"savory": 8}
+    },
+    {
+      "name": "Pesto Pasta",
+      "price": 14,
+      "taste_balance": {"sweet": 2,"sour": 1,"bitter": 1,"salty": 4,"savory": 7}
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Mango Tango Smoothie",
+      "price": 6,
+      "taste_balance": {"sweet": 8,"sour": 3,"bitter": 1,"salty": 2,"savory": 1}
+    },
+    {
+      "name": "Cucumber Mint Lemonade",
+      "price": 5,
+      "taste_balance": {"sweet": 4,"sour": 7,"bitter": 2,"salty": 1,"savory": 1}
+    },
+    {
+      "name": "Strawberry Basil Lemonade",
+      "price": 7,
+      "taste_balance": {"sweet": 6,"sour": 5,"bitter": 1,"salty": 1,"savory": 1}
+    },
+    {
+      "name": "Iced Caramel Macchiato",
+      "price": 8,
+      "taste_balance": {"sweet": 7,"sour": 2,"bitter": 3,"salty": 1,"savory": 1}
+    },
+    {
+      "name": "Classic Mojito",
+      "price": 9,
+      "taste_balance": {"sweet": 5,"sour": 8,"bitter": 2,"salty": 1,"savory": 1}
+    }
+  ],
+  "appetizers": [
+    {
+      "name": "Loaded Potato Skins",
+      "price": 9,
+      "taste_balance": {"sweet": 1,"sour": 2,"bitter": 3,"salty": 6,"savory": 8}
+    },
+    {
+      "name": "Shrimp Spring Rolls",
+      "price": 11,
+      "taste_balance": {"sweet": 3,"sour": 4,"bitter": 2,"salty": 5,"savory": 7}
+    },
+    {
+      "name": "Buffalo Cauliflower Bites",
+      "price": 8,
+      "taste_balance": {"sweet": 1,"sour": 3,"bitter": 2,"salty": 7,"savory": 8}
+    },
+    {
+      "name": "Mozzarella Sticks",
+      "price": 7,
+      "taste_balance": {"sweet": 1,"sour": 2,"bitter": 1,"salty": 6,"savory": 7}
+    },
+    {
+      "name": "Brussels Sprouts with Balsamic Glaze",
+      "price": 10,
+      "taste_balance": {"sweet": 2,"sour": 3,"bitter": 5,"salty": 4,"savory": 6}
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Chocolate Lava Cake",
+      "price": 8,
+      "taste_balance": {"sweet": 9, "sour": 1, "bitter": 2, "salty": 1, "savory": 1}
+    },
+    {
+      "name": "Cheesecake",
+      "price": 12,
+      "taste_balance": {"sweet": 8, "sour": 3, "bitter": 1, "salty": 2, "savory": 1}
+    },
+    {
+      "name": "Red Velvet Cupcake",
+      "price": 5,
+      "taste_balance": {"sweet": 7, "sour": 2, "bitter": 2, "salty": 1, "savory": 1}
+    },
+    {
+      "name": "Tropical Fruit Sorbet",
+      "price": 6,
+      "taste_balance": {"sweet": 9, "sour": 4, "bitter": 1, "salty": 1, "savory": 1}
+    },
+    {
+      "name": "Pecan Pie",
+      "price": 9,
+      "taste_balance": {"sweet": 7, "sour": 2, "bitter": 2, "salty": 1, "savory": 1}
+    }
+  ]
+}
