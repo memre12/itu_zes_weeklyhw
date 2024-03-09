@@ -25,7 +25,9 @@ void secondpage::on_pushButton_clicked() {
 
 void secondpage::on_pushButton_3_clicked()
 {
-    QApplication::exit(true);
+    if (QMessageBox::question(this, "Question", "Are you sure to exit?", QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        QApplication::exit(0);
+    }
 }
 
 
