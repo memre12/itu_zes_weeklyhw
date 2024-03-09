@@ -121,7 +121,7 @@ void menu_rec::on_pushButton_2_clicked()
 
         //starter
         QMessageBox::StandardButton reply_starter;
-        reply_starter = QMessageBox::question(this, "Question", "Do you want the starter to be served hot or cold?(if hot, click yes/ if cold, click no", QMessageBox::Yes | QMessageBox::No);
+        reply_starter = QMessageBox::question(this, "Question", "Do you want the starter to be served hot or cold?(if hot, click yes/ if cold, click no)", QMessageBox::Yes | QMessageBox::No);
         QString servingTemperature = (reply_starter == QMessageBox::Yes) ? "hot" : "cold";
 
         if(servingTemperature == "hot"){
@@ -135,7 +135,7 @@ void menu_rec::on_pushButton_2_clicked()
         //salad
 
         QMessageBox::StandardButton reply_salad;
-        reply_salad = QMessageBox::question(this, "Question", "Do you want to add topic", QMessageBox::Yes|QMessageBox::No);
+        reply_salad = QMessageBox::question(this, "Question", "Do you want to add topic? (2.25$)", QMessageBox::Yes|QMessageBox::No);
         if (reply_salad == QMessageBox::Yes) {
             // User clicked Yes, proceed with adding the salad
 
@@ -152,26 +152,27 @@ void menu_rec::on_pushButton_2_clicked()
         //drinks
 
         QMessageBox::StandardButton carbonationReply;
-        carbonationReply = QMessageBox::question(this, "Question", "Do you want your drink carbonated?", QMessageBox::Yes | QMessageBox::No);
+        carbonationReply = QMessageBox::question(this, "Question", "Do you want your drink carbonated? (0.5$)", QMessageBox::Yes | QMessageBox::No);
 
         QMessageBox::StandardButton alcoholReply;
-        alcoholReply = QMessageBox::question(this, "Question", "Do you want an additional alcohol shot in your drink?", QMessageBox::Yes | QMessageBox::No);
+        alcoholReply = QMessageBox::question(this, "Question", "Do you want an additional alcohol shot in your drink? (2.5$)", QMessageBox::Yes | QMessageBox::No);
 
         std::string answer = "yes";
         if (carbonationReply == QMessageBox::Yes) {
             drink.set_Foodprice(drink.get_Foodprice()+0.5);
             drink.ask_carbonated(answer);
         }
+        std::string answer1 = "yes";
 
         if (alcoholReply == QMessageBox::Yes) {
             drink.set_Foodprice(drink.get_Foodprice()+2.5);
-            drink.ask_alcohol(answer);
+            drink.ask_alcohol(answer1);
         }
 
         //appetizer
 
         QMessageBox::StandardButton reply_appetizer;
-        reply_appetizer = QMessageBox::question(this, "Question", "When do you want the appetizer to be served?", QMessageBox::Yes | QMessageBox::No);
+        reply_appetizer = QMessageBox::question(this, "Question", "When do you want the appetizer to be served? (if before, click yes/ if after, click no)", QMessageBox::Yes | QMessageBox::No);
 
         QString servingTime = (reply_appetizer == QMessageBox::Yes) ? "before" : "after";
 
@@ -186,7 +187,7 @@ void menu_rec::on_pushButton_2_clicked()
         // dessert
 
         QMessageBox::StandardButton reply_dessert;
-        reply_dessert = QMessageBox::question(this, "Question", "Do you want extra chocolate?", QMessageBox::Yes | QMessageBox::No);
+        reply_dessert = QMessageBox::question(this, "Question", "Do you want extra chocolate? (1.5$)", QMessageBox::Yes | QMessageBox::No);
 
         double extraCost = (reply_dessert == QMessageBox::Yes) ? 1.5 : 0.0;
         dessert.set_Foodprice(dessert.get_Foodprice()+extraCost);
@@ -201,10 +202,11 @@ void menu_rec::on_pushButton_2_clicked()
             QString appinfo = QString::fromStdString(MainWindow::menuPtr->chosenitems[var].get_Foodname()) + " - " + QString::number(MainWindow::menuPtr->chosenitems[var].get_Foodprice()) + " $";
             ui->menu_rec_2->addItem(new QListWidgetItem(appinfo));
         }
+        QMessageBox::information(this, "Menu", "Menu is successfully saved");
+
 
     } else {
         // User doesn't want to edit menu properties
-        QMessageBox::information(this, "Menu", "Menu is successfully saved");
         MainWindow::menuPtr->addItems(starter);
         MainWindow::menuPtr->addItems(salad);
         MainWindow::menuPtr->addItems(maincourse);
@@ -215,6 +217,8 @@ void menu_rec::on_pushButton_2_clicked()
             QString appinfo = QString::fromStdString(MainWindow::menuPtr->chosenitems[var].get_Foodname()) + " - " + QString::number(MainWindow::menuPtr->chosenitems[var].get_Foodprice()) + " $";
             ui->menu_rec_2->addItem(new QListWidgetItem(appinfo));
         }
+        QMessageBox::information(this, "Menu", "Menu is successfully saved");
+
     }
 }
 
