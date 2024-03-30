@@ -61,5 +61,5 @@ The application demonstrates:
 * Grayscale Conversion: Converts the image to a grayscale image.
 * Canny Edge Detection: Detects a wide range of edges in images.
 ## Additional Notes
-The param.yaml file allows easy adjustment of the image processing pipeline's parameters without modifying the code.
-The project structure facilitates easy extension with more image processing techniques or different ROS2 message types.
+* The param.yaml file allows easy adjustment of the image processing pipeline's parameters without modifying the code.
+* The project structure facilitates easy extension with more image processing techniques or different ROS2 message types.
