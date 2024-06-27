@@ -1,0 +1,6 @@
+avoidance_turtle:
+  ros__parameters:
+    turtle_name: "turtle1"
+    grid_width: 250
+    grid_height: 250
+    occupied_threshold: 0.2
