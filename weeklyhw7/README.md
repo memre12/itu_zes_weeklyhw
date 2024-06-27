@@ -7,9 +7,9 @@ This project implements a path planner for a TurtleSim simulator, designed to na
 - [Introduction](#introduction)
 - [Features](#features)
 - [Configuration](#configuration)
-- [Path Planning Algorithms](##Path-Planning-and-Control-Algorithms)
+- [Path Planning Algorithms](##path-planning-and-control-algorithms)
   - [A* Algorithm](#A*-Algorithm)
-  - [Pure Pursuit](###Pure-Pursuit-Control-Algorithm)
+  - [Pure Pursuit](###pure-pursuit-control-algorithm)
 - [Contact](#contact)
 
 ## Introduction
