@@ -2,8 +2,11 @@
 
 This project implements a path planner for a TurtleSim simulator, designed to navigate a turtle from an initial position to a randomly generated goal position while avoiding randomly placed static obstacles.
 
+## Path Plannig for Random Target with A* Algorithm
 ![turtlesim_region_with_path](https://github.com/memre12/itu_zes_weeklyhw/assets/114512711/be2385d4-1647-4dc1-83fa-081d20918485)
 
+## Following Path with Pure Pursuit Control Algorithm
+![Screenshot from 2024-06-28 14-43-36](https://github.com/memre12/itu_zes_weeklyhw/assets/114512711/c4ede772-63c5-4c3b-aa9c-a98e92267910)
 
 ## Table of Contents
 
