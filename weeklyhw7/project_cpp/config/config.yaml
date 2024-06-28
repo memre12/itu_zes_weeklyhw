@@ -1,6 +1,12 @@
 avoidance_turtle:
   ros__parameters:
     turtle_name: "turtle1"
-    grid_width: 250
-    grid_height: 250
-    occupied_threshold: 0.2
+    grid_width: 200
+    grid_height: 200
+    offset_x: 0.0
+    offset_y: 0.0
+    num_turtles: 12
+    dilation_size: 8
+    lookahead_distance_base: 0.4
+    remove_width : 15
+    remove_height : 12
