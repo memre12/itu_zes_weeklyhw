@@ -30,16 +30,35 @@ public:
     {
         // Declare parameters
         this->declare_parameter<std::string>("turtle_name", "turtle1");
-        this->declare_parameter<int>("grid_width", 500);  // Grid size
-        this->declare_parameter<int>("grid_height", 500); // Grid size
-        this->declare_parameter<double>("occupied_threshold", 0.2);
-
+        this->declare_parameter<int>("grid_width", 200);  // Grid size in the function of the grid
+        this->declare_parameter<int>("grid_height", 200); // Grid size in the function of the grid
+        this->declare_parameter<double>("offset_x", 0.0); // Offset for the turtle's x position in the function of the grid
+        this->declare_parameter<double>("offset_y", 0.0); // Offset for the turtle's y position in the function of the grid
+        this->declare_parameter<int>("num_turtles", 12);  // Number of turtles to spawn
+        this->declare_parameter<double>("target_x", 5.5); // Target x position "firstly 5.5 that is main point of x position"
+        this->declare_parameter<double>("target_y", 5.5); // Target y position  "firstly 5.5 that is main point of y position"
+        this->declare_parameter<int>("dilation_size", 8); // Dilation size for the occupancy grid to increase the obstacle size to avoid conveniently
+        this->declare_parameter<double>("lookahead_distance_base", 0.4); // Base value for lookahead distance for the pure pursuit controller
+        this->declare_parameter<int>("remove_width", 15); // Width of the area to remove the main turtle from the occupancy grid
+        this->declare_parameter<int>("remove_height", 12); // Height of the area to remove the main turtle from the occupancy grid
 
         // Get parameters
         name_ = this->get_parameter("turtle_name").as_string();
         grid_width_ = this->get_parameter("grid_width").as_int();
         grid_height_ = this->get_parameter("grid_height").as_int();
-        occupied_threshold_ = this->get_parameter("occupied_threshold").as_double();
+        offset_x = this->get_parameter("offset_x").as_double();
+        offset_y = this->get_parameter("offset_y").as_double();
+        target_x_ = this->get_parameter("target_x").as_double();
+        target_y_ = this->get_parameter("target_y").as_double();
+        int num_turtles = this->get_parameter("num_turtles").as_int();
+        dilation_size = this->get_parameter("dilation_size").as_int();
+        lookahead_distance_base = this->get_parameter("lookahead_distance_base").as_double();
+        remove_width = this->get_parameter("remove_width").as_int();
+        remove_height = this->get_parameter("remove_height").as_int();
+
+
+
+
 
         // Initialize the occupancy grid
         occupancy_grid_.resize(grid_height_, std::vector<int>(grid_width_, 0));
@@ -55,7 +74,7 @@ public:
         spawn_client_ = this->create_client<turtlesim::srv::Spawn>("spawn");
 
         // Create turtles
-        create_homogeneous_turtles(24);
+        create_homogeneous_turtles(num_turtles);
 
         // Create timers to call updateOccupancyGrid and captureScreen every 500 milliseconds
         timer_ = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&Turtle_avoid::updateOccupancyGrid, this));
@@ -65,12 +84,13 @@ public:
     }
 
 private:
+    // Callback function to get the turtle's pose
     void callbackPose(const turtlesim::msg::Pose::SharedPtr pose) {
         pose_ = *pose;
         turtlesim_up_ = true;
-        // RCLCPP_INFO(this->get_logger(), "Turtle pose: x=%f, y=%f, theta=%f", pose_.x, pose_.y, pose_.theta);
     }
 
+    // Update the occupancy grid based on the captured screen and detect turtles which are obstacles
     void updateOccupancyGrid() {
         if (!flag_update_occupancy) {
 
@@ -150,13 +170,8 @@ private:
                 // Remove the background from the mask
                 cv::bitwise_and(mask, ~background_mask, mask);
 
-                // Apply morphological operations to close gaps and then dilate
+                // Apply morphological operations to close gaps
                 cv::morphologyEx(mask, mask, cv::MORPH_CLOSE, cv::Mat(), cv::Point(-1, -1), 2);
-                int dilation_size = 1;  // Slightly larger size
-                cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT,
-                                cv::Size(2 * dilation_size + 1, 2 * dilation_size + 1),
-                                cv::Point(dilation_size, dilation_size));
-                cv::dilate(mask, mask, element);
 
                 std::vector<std::vector<cv::Point>> contours;
                 cv::findContours(mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
@@ -179,16 +194,10 @@ private:
                 }
             }
 
-            double offset_x = 0.0;  // Adjust this value as needed
-            double offset_y = 0.0;  // Adjust this value as needed
-
 
             // Convert turtle world position to grid position
             auto [turtle_x, turtle_y] = worldToGrid(pose_.x - offset_x, pose_.y - offset_y, grid_width_, grid_height_);
 
-            // Define the dimensions of the removal area
-            int remove_width = 15;  // Adjust as needed
-            int remove_height = 12;  // Adjust as needed
 
             // Remove the turtle from the occupancy grid
             for (int y = std::max(0, turtle_y - remove_height); y <= std::min(grid_height_ - 1, turtle_y + remove_height); ++y) {
@@ -208,7 +217,6 @@ private:
             cv::imwrite("turtlesim_region.png", turtlesim_region);
 
             // Apply additional dilation
-            int dilation_size = 10;  // Increased dilation size
             cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT,
                                 cv::Size(2 * dilation_size + 1, 2 * dilation_size + 1),
                                 cv::Point(dilation_size, dilation_size));
@@ -232,6 +240,7 @@ private:
         }
     }
 
+    // Create turtles with random positions which are obstacles for the main turtle
     void create_homogeneous_turtles(int num_turtles) {
         std::vector<std::pair<double, double>> positions;
         double central_x = 5.5;
@@ -295,7 +304,7 @@ private:
 
 
 
-
+    // Capture the screen using Xlib
     cv::Mat captureScreen() {
         if(!flag_capture){
             // Open display
@@ -415,7 +424,6 @@ private:
         }
 
         // Pure Pursuit parameters
-        double lookahead_distance_base = 0.4;  // Base value for lookahead distance
         double lookahead_distance = lookahead_distance_base * (1.0 + 0.5 * dist_to_target);  // Dynamic lookahead distance
         double min_distance = std::numeric_limits<double>::max();
         size_t lookahead_index = 0;
@@ -481,7 +489,7 @@ private:
 
 
 
-
+    // Draw the path on the occupancy grid and save the image
     void drawAndSavePath(const std::vector<AStar::Vec2i>& path) {
         if (!flag_path) {
             cv::Mat path_image(grid_height_, grid_width_, CV_8UC3, cv::Scalar(255, 255, 255));
@@ -548,7 +556,7 @@ private:
     }
 
 
-
+    // Generate a random target for the turtle
     void generateRandomTarget() {
         std::random_device rd;
         std::mt19937 gen(rd());
@@ -588,17 +596,19 @@ private:
 
 
 
-
+    // Calculate the Euclidean distance between two points
     double getDistance(double x1, double y1, double x2, double y2) {
         return std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
     }
 
+    // Convert grid coordinates to world coordinates
     std::pair<double, double> gridToWorld(int grid_x, int grid_y, int grid_width, int grid_height) {
         double world_x = (static_cast<double>(grid_x) / grid_width) * 11.0;
         double world_y = 11.0 - (static_cast<double>(grid_y) / grid_height) * 11.0;
         return {world_x, world_y};
     }
 
+    // Convert world coordinates to grid coordinates
     std::pair<int, int> worldToGrid(double world_x, double world_y, int grid_width, int grid_height) {
         int grid_x = static_cast<int>(world_x / 11.0 * grid_width);
         int grid_y = grid_height - static_cast<int>(world_y / 11.0 * grid_height);
@@ -606,25 +616,44 @@ private:
     }
     
 
+    // parameters
+    std::string name_;
+    int grid_width_;
+    int grid_height_;
+    double offset_x;
+    double offset_y;
+    double target_x_;
+    double target_y_;
+    int dilation_size;
+    double lookahead_distance_base;
+    int remove_width;
+    int remove_height;
+
+
+    // random number generator
     std::random_device rd;
     std::mt19937 gen;
     std::uniform_real_distribution<> dis;
+    std::vector<std::pair<double, double>> turtle_positions_;
+
+    // flags
     bool target_reached = false;
     bool grid_initialized_;
     bool main_turtle_spawned_;
     bool turtlesim_up_;
-    std::vector<AStar::Vec2i> path;
     bool path_generated_;
     bool flag_capture = false;
     bool flag_update_occupancy = false;
     bool flag_path = false;
     bool initial_orientation_adjustment_ = true;
+
+    // path
+    std::vector<AStar::Vec2i> path;
+
+    // occupancy grid
     std::vector<std::vector<int>> occupancy_grid_;
-    std::string name_;
-    turtlesim::msg::Pose pose_;
-    int grid_width_, grid_height_;
-    double occupied_threshold_;
-    double target_x_ = 5.5 , target_y_ = 5.5;
+
+    // publishers, subscribers, service clients, timers
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_;
     rclcpp::Subscription<turtlesim::msg::Pose>::SharedPtr sub_;
     rclcpp::Client<turtlesim::srv::Spawn>::SharedPtr spawn_client_;
@@ -632,7 +661,8 @@ private:
     rclcpp::TimerBase::SharedPtr timer_1;
     rclcpp::TimerBase::SharedPtr cancel_timer_;
     rclcpp::TimerBase::SharedPtr controlLoop_timer_;
-    std::vector<std::pair<double, double>> turtle_positions_;
+    turtlesim::msg::Pose pose_;
+
 
 };
 
