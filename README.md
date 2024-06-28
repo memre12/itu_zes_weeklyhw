@@ -1,4 +1,4 @@
-# ITU SCT Autonomous Group
+# ITU SCT Autonomous Group Projects and Assignments
 
 <h1 align="center">
   <img src="https://github.com/memre12/itu_zes_weeklyhw/assets/114512711/a67b6b5c-b0ba-46dd-8ee0-92d1709f0a0f" alt="itu-gae">
