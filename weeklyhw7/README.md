@@ -46,15 +46,32 @@ Example configuration (`config/config.yaml`):
 avoidance_turtle:
   ros__parameters:
     turtle_name: "turtle1"
-    grid_width: 250
-    grid_height: 250
-    occupied_threshold: 0.2
+    grid_width: 200
+    grid_height: 200
+    offset_x: 0.0
+    offset_y: 0.0
+    num_turtles: 12
+    dilation_size: 8
+    lookahead_distance_base: 0.4
+    remove_width: 15
+    remove_height: 12
 ```
 
-This section explains how to configure the project using a YAML file, providing an example of the configuration parameters.
+This section explains how to configure the project using a YAML file, providing an example of the configuration parameters. Here are the key parameters:
+
+- `turtle_name`: Name of the turtle in the simulation.
+- `grid_width`: Width of the occupancy grid.
+- `grid_height`: Height of the occupancy grid.
+- `offset_x`: X-axis offset for the grid.
+- `offset_y`: Y-axis offset for the grid.
+- `num_turtles`: Number of turtles (obstacles) in the simulation.
+- `dilation_size`: Size of the dilation used in obstacle detection.
+- `lookahead_distance_base`: Base distance for the lookahead algorithm.
+- `remove_width`: Width of the area to remove obstacles.
+- `remove_height`: Height of the area to remove obstacles.
 
 
-## Path Planning and Control Algorithms
+## lPath Planning and Control Algorithms
 
 ### A* Algorithm
 
