@@ -71,7 +71,7 @@ This section explains how to configure the project using a YAML file, providing 
 - `remove_height`: Height of the area to remove obstacles.
 
 
-## lPath Planning and Control Algorithms
+## Path Planning and Control Algorithms
 
 ### A* Algorithm
 
